@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Defense Helper for {{ user.name }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="defense.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="defense.js"></script>
+  </head>
+  <body ng-app="defenseHelper" ng-controller="DefenseController">
+    <header>
+      <h1 class="text-center">Social Monitoring</h1>
+      <h3 class="text-center">Defense Helper</h3>
+    </header>
+    <!-- Page Container -->
+    <div style="width:100%;">
+    <div class="format-preview" style="width: 70%;" ng-controller="UrlController">
+      <div class="input-group text-center" ng-hide="letsFormat">
+          <span class="input-group-addon">www</span>
+          <input  ng-model="PostURL" type="url" id="sizing-addon1" class="form-control" placeholder="Enter your URL Here" required >
+            <div ng-show="$submitted || form.PostURL.$touched">
+              <span ng-show="css-form.PostURL.$error.required">Please insert a URL.</span>
+              <span ng-show="css-form.PostURL.$error.url">This is not a valid URL.</span>
+            </div>
+          <span class="input-group-btn">
+            <input class="btn btn-default" type="submit" ng-click="postID(PostURL)" value="Let's Format!">
+          </span>
+      </div>
+      <!-- Format preview -->
+      <div class="post-n-resp" ng-show="postID().letsFormat">
+        <em>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>></em>
+        <p>
+          <span class="highlight-me">
+            {{UName}}<br />
+            {{Post}}<br />
+            {{TimeOfPost}}
+          </span>
+        </p>
+        <p>
+          <span class="highlight-me">
+            Quicken Loans<br />
+            {{Response}}<br />
+            {{TimeOfResponse}}
+          </span>
+        </p>
+        <input type="file" accepts="image/*" value="Add Image" />
+        <br />
+        <span>Original Post Link: <a href="{{ PostURL }}">{{ PostURL }}</a></span>
+        <div>
+          <span class="highlight-me">
+            {{UName}}
+            <ul>
+              <li><span class="highlight-me">{{TwDesc}} Description</span></li>
+              <li><span class="highlight-me">Followers: {{TwFollowers | number}}</span></li>
+            </ul>
+          </span>
+        </div>
+        <em>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>></em><br />
+        <input type="button" value="Copy Everything" />
+        {{ postID().m }}
+      </div>
+    </div>
+    <div class="panel panel-default" ng-show="letsFormat">
+      <!-- Default panel contents -->
+      <div class="panel-heading"><h4 class="text-center">User Data</h4></div>
+      <div class="panel-body">
+        <p>Here you can see all of the times this user has mentioned us or @cavsdan.</p>
+      </div>
+      <!-- List group -->
+      <div class="list-group">
+        <a href="#" class="list-group-item" ng-repeat="">{{post}}</a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item">Morbi leo risus</a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item">Vestibulum at eros</a>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
